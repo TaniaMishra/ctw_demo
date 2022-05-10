@@ -18,7 +18,7 @@ function Expenses(props) {
                     title={expensesElement.title}
                     amount={expensesElement.amount}
                     date={expensesElement.date}
-                    key={index}
+                    key={expensesElement.id}
                 ></ExpenseItem>
             ))}
         </Card>
