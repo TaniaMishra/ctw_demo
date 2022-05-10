@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import ExpenseItem from "./ExpenseItem.js";
 import ExpensesFilter from "../components/newExpense/ExpensesFilter.js"
 import Card from "./Card.js";
 
 function Expenses(props) {
+    const [filteredYear, setFilteredYear] = useState("2020");
+
     function filterChangeHandler(selectedYear) {
-        console.log("In Expenses");
-        console.log(selectedYear);
+        setFilteredYear(selectedYear);
     }  
 
     return (
