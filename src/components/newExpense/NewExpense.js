@@ -12,15 +12,19 @@ function NewExpense(props){
             id: Math.random().toString()	//Every element needs a unique ID
         };
         props.onAddExpense(expenseData);
+        setIsEditing(false);
     }
     function startEditingHandler() {
         setIsEditing(true);
+    }
+    function stopEditingHandler() {
+        setIsEditing(false);
     }
 
     return(
         <div className='new-expense'>
             {isEditing ? (
-                <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}></ExpenseForm>
+                <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={stopEditingHandler}></ExpenseForm>
             ):(
                 <button onClick={startEditingHandler}>Add New Expense</button>
             )}
