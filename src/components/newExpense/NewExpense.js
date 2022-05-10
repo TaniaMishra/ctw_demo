@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm.js'
 
 function NewExpense(props){
+    const [isEditing, setIsEditing] = useState(false);
+
     function saveExpenseDataHandler(enteredExpenseData) { 
         //The parameter will be the data collected at form submission
         const expenseData = {
@@ -11,10 +13,17 @@ function NewExpense(props){
         };
         props.onAddExpense(expenseData);
     }
+    function startEditingHandler() {
+        setIsEditing(true);
+    }
 
     return(
         <div className='new-expense'>
-            <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}></ExpenseForm>
+            {isEditing ? (
+                <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}></ExpenseForm>
+            ):(
+                <button onClick={startEditingHandler}>Add New Expense</button>
+            )}
         </div>
     );
 }
